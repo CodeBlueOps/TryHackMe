@@ -1,0 +1,85 @@
+Checking if a file exists is just the beginning—YARA offers powerful conditions to refine malware detection.
+
+Key YARA Rule Components
+1️⃣ Meta (Optional but Useful)
+Used for descriptive information (author, description, references).
+Does not affect rule behavior.
+Example:
+rule example_rule {
+    meta:
+        author = "YourName"
+        description = "Detects Hello World in files"
+}
+2️⃣ Strings (Pattern Matching)
+Strings help find specific text or hexadecimal values inside files.
+Example:
+rule helloworld_checker {
+    strings:
+        $hello_world = "Hello World!"
+}
+But this rule is incomplete—it needs a condition!
+Full version with a condition:
+rule helloworld_checker {
+    strings:
+        $hello_world = "Hello World!"
+    condition:
+        $hello_world
+}
+✔️ This rule matches any file containing "Hello World!".
+3️⃣ Matching Multiple Strings
+Use any of them to match multiple variations:
+rule helloworld_checker {
+    strings:
+        $hello_world = "Hello World!"
+        $hello_world_lower = "hello world"
+        $hello_world_upper = "HELLO WORLD"
+    condition:
+        any of them
+}
+✔️ This rule matches files containing:
+"Hello World!"
+"hello world"
+"HELLO WORLD"
+Using Conditions in YARA
+Conditions allow complex matching based on various criteria.
+4️⃣ Comparison Operators
+Operator
+Description
+<=
+Less than or equal to
+>=
+More than or equal to
+!=
+Not equal to
+Example:
+rule hello_count_checker {
+    strings:
+        $hello_world = "Hello World!"
+    condition:
+        #hello_world <= 10
+}
+✔️ Matches files where "Hello World!" appears 10 times or fewer.
+5️⃣ Combining Conditions
+YARA supports logical operators:
+Operator
+Function
+and
+Both conditions must be true
+or
+At least one condition must be true
+not
+The condition must NOT be true
+Example:
+rule hello_filesize_checker {
+    strings:
+        $hello_world = "Hello World!"
+    condition:
+        $hello_world and filesize < 10KB
+}
+✔️ Only matches if:
+The file contains "Hello World!"
+The file size is less than 10KB
+Using YARA Effectively
+🔹 Combine string matching with file size checks, counts, or other conditions for precise detection.
+🔹 Use meta sections to document rules clearly.
+🔹 YARA cheat sheet (like fr0gger_'s)! 
