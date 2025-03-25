@@ -1,0 +1,31 @@
+Yara
+
+Learn the applications and language that is Yara for everything threat intelligence, forensics, and threat hunting!
+YARA: The Pattern Matching Tool for Malware Research
+
+"The pattern matching Swiss knife for malware researchers (and everyone else)" - (Virustotal, 2020)
+What is YARA?
+
+YARA helps identify files based on patterns, including binary and textual data like hexadecimal values and strings.
+It works by using rules to detect these patterns, often to determine if a file is malicious.
+
+YARA Rules and Strings
+Strings are essential in programming and are used to store text.
+Malware also uses strings to store important information.
+
+Example: A simple Python program that prints "Hello World" uses a string:
+print("Hello World!")
+
+A YARA rule could be written to search for "hello world" in all programs on an operating system.
+Why Does Malware Use Strings?
+
+Malware, like normal applications, stores important data in strings. Examples:
+Type                         Data                             Description
+Ransomware    12t9YDPgwueZ9NyMgw519p7AA8isjr6SMw    Bitcoin wallet for ransom payments
+Botnet                    12.34.56.7            IP address of the Command and Control (C&C) server
+
+Conclusion
+YARA is a powerful tool for detecting malware by searching for specific patterns and strings within files. Cybersecurity professionals use it to analyze threats and improve defenses.
+
+
+
