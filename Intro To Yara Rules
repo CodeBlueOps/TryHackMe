@@ -1,0 +1,46 @@
+Intro To Yara Rules
+
+Your First YARA Rule: A Beginner's Guide
+
+Understanding YARA Rules
+YARA uses a simple but powerful rule-based language.
+Rules help identify patterns in files, directories, or running processes.
+
+To use a YARA rule, you need:
+A rule file (e.g., myrule.yar).
+A target (file, directory, or process ID).
+
+Creating Your First YARA Rule
+1️⃣ Create a test file named somefile:
+
+touch somefile
+2️⃣ Create a YARA rule file named myfirstrule.yar:
+
+touch myfirstrule.yar
+3️⃣ Open myfirstrule.yar in a text editor (nano) and add the following rule:
+
+nano myfirstrule.yar
+rule examplerule {
+    condition: true
+}
+
+🔹 Explanation:
+The rule is named examplerule.
+
+The condition (condition: true) checks if the specified file exists.
+
+- Running the YARA Rule
+
+Run the rule on somefile:
+
+yara myfirstrule.yar somefile
+✔️ If somefile exists, the output will be:
+
+examplerule somefile
+❌ If the file does not exist, you’ll see an error like:
+error scanning sometextfile: could not open file
+
+Summary
+✅ YARA rules need a name and a condition.
+✅ This basic rule always returns true if the target exists.
+✅ YARA is a powerful tool for malware analysis and threat detection.
